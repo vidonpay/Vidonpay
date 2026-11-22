@@ -8,18 +8,21 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("VidonPay backend is running 🚀");
+  res.json({
+    message: "Welcome to VidonPay API!",
+    status: "running"
+  });
 });
 
 app.get("/api/health", (req, res) => {
   res.json({
-    status: "success",
-    message: "VidonPay API is healthy"
+    status: "healthy",
+    app: "VidonPay"
   });
 });
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`VidonPay server running on port ${PORT}`);
 });
